@@ -1,0 +1,31 @@
+.link {
+    margin-top: 1.5em;
+    &--read-more {
+        color: white;
+        font-size: 1.2rem;
+        border: 2px solid white;
+        padding: 10px 25px;
+        border-radius: 100px;
+        &--dark{
+            color: black;
+            border:2px solid black
+        }
+        &--filled {
+            background-color: $primary;
+        }
+    }
+    &--animated {
+        &:hover {
+            color: white;
+            background-color: $dark-blue;
+            border-color: none;
+            animation: shakeElement 0.5s linear 1;
+        }
+    }
+
+    &--inline {
+        color: $grey-700;
+        font-style: italic;
+    }
+    
+}

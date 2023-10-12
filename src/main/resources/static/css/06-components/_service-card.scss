@@ -1,0 +1,72 @@
+.service-card {
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    padding: 30px;
+    margin-bottom: 30px;
+    color: white;
+    background: linear-gradient(white 20%, $primary 65%);
+    transition: all 0.3s;
+    &:hover {
+        transform: scale(1.02);
+        z-index: 3;
+        box-shadow: 0 0 10px black;
+    }
+
+    &__wrapper {
+        position: relative;
+        z-index: 3;
+        width: 90%;
+    }
+    &__item {
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+
+        &__gallery {
+            position: relative;
+            padding-top: 56.2%;
+            overflow: hidden;
+            width: 100%;
+
+            img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 100%;
+                transform: translate(-50%, -50%);
+
+            }
+        }
+    }
+
+    &__icon {
+        font-size: 5rem;
+    }
+
+    &__heading {
+        border-bottom: 2px solid white;
+        padding: 1em 0;
+        margin-bottom: 1em;
+        height: 100px;
+    }
+
+    &__content {
+        margin: 3.5rem 0;
+    }
+
+    &__text {
+        height: 130px;
+    }
+
+    &__link {
+        color: white;
+        font-size: 1.2rem;
+        border: 2px solid white;
+        padding: 10px 25px;
+        border-radius: 100px;
+    }
+
+}

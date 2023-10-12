@@ -1,0 +1,109 @@
+.preview {
+    &__controls {
+        position: absolute;
+        color: white;
+        width:100%;
+        top:60px;
+        cursor: pointer;
+        z-index: 6;
+        &--prev,
+        &--next {
+            top:12%;
+            position:absolute;
+            font-size: 4em;
+        }
+        &--prev {
+            left: 50px;
+
+        }
+        &--next {
+            left: 80%;
+
+        }
+        &__tooltip {
+            visibility:hidden;
+        }
+    }
+
+    &__close-btn {
+        position: absolute;
+        right: 30px;
+        top: 20px;
+        font-size: 1.5em;
+        cursor: pointer;
+        border: 2px solid white;
+        border-radius: 50%;
+        padding: 5px 15px; 
+    }
+
+    @include for-tablet-landscape-up {
+        &__controls{
+            &--next {
+                left: 92%;
+            }
+        }
+
+    }
+    @include for-desktop-up {
+        &__controls {
+            top:50%;
+            transform: translateY(-50%);
+            &--prev,
+            &--next {
+                top:50%;
+                transform: translateY(-50%);
+            }
+            &--prev {
+                left: 50px;
+                &:hover .preview__controls__tooltip--prev{
+                    visibility: visible;
+                }
+            }
+            &--next {
+                &:hover .preview__controls__tooltip--next{
+                    visibility: visible;
+                }
+            }
+
+            &__tooltip {
+                display: inline;
+                position: absolute;
+                top:80px;
+                background-color: transparent;
+                font-size: 1rem;
+                white-space: nowrap;
+                overflow: hidden;
+                z-index: 9;
+                padding: 5px 10px;
+
+                &--prev {
+                    left: -2em;
+                    &:hover p {
+                        animation: floatText 5s infinite linear;
+                    }
+                }
+                &--next {
+                    left: -5em;
+                    &:hover p {
+                        animation: floatText 5s infinite linear;
+                    }
+                }
+            }
+        
+        }
+
+        &__close-btn {
+            position: absolute;
+            right: 30px;
+            top: 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            border: 2px solid white;
+            border-radius: 50%;
+            padding: 5px 15px; 
+        }
+
+    }
+}
+
+

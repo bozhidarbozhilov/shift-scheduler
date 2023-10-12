@@ -1,0 +1,23 @@
+.latest-news-section {
+    text-align: center;
+    margin: 5em auto 6em auto;
+    position: relative;
+
+    @include for-tablet-portrait-up {
+        .latest-news__container {
+            display:grid;
+            grid-template-columns: 43% 43%;
+            justify-content: space-evenly;
+            
+        }
+    }
+
+    @include for-desktop-up {
+        .latest-news__container {
+            display:grid;
+            grid-template-columns: 30% 30% 30%;
+            justify-content: space-evenly;
+            
+        }
+    }
+}

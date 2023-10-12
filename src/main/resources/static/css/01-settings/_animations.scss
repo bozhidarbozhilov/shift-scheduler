@@ -1,0 +1,61 @@
+@keyframes shakeElement {
+    33% {
+        transform: rotate(5deg);
+    }
+    67% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes revealFromLeft {
+    0%{
+        transform: translateX(-100vw);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity:1;
+    }
+}
+
+@keyframes revealFromRight {
+    0%{
+        transform:translateX(20vw);
+        opacity:0;
+    }
+    100%{
+        transform: translateX(0);
+        opacity:1;
+    }
+}
+
+@keyframes revealFromAbove {
+    0%{
+        transform: translateY(-20vh);
+        opacity:0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity:1;
+    }
+}
+
+@keyframes revealFromDown {
+    0%{
+        transform: translateY(20vh);
+        opacity:0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity:1;
+    }
+}
+
+@keyframes floatText {
+    to {
+      transform: translateX(-100%);
+    }
+}

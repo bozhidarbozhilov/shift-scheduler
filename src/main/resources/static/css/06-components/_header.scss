@@ -1,0 +1,63 @@
+.site-header {
+    background-color: $primary;
+    color: white;
+
+    &__top {
+        & .content-container {
+            flex-flow: column;
+        }
+        padding: 1em 0;
+        font-weight: bold;
+    }
+
+    &__contacts__list {
+        padding: 0;
+        list-style: none outside;
+
+        &__link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .icon {
+            padding-right: 0.5em;
+        }
+    }
+
+    &__socials {
+        justify-content: center;
+        align-items: center;
+
+        &__list {
+            list-style: none outside;
+            margin: 0;
+            padding: 0;
+            justify-content: space-evenly;
+
+            &__item {
+                margin: 0 1em;
+            }
+
+            &__link {
+                text-decoration: none;
+                color: inherit;
+            }
+
+        }
+    }
+
+    @include for-tablet-portrait-up {
+        &__top {
+            .content-container{
+                flex-flow: row nowrap;
+                justify-content: space-between;
+            }
+        }
+
+        &__contacts__list {
+            &__item:nth-child(2) {
+                margin-left: 1em;
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+.cookies-consent {
+    width: 100%;
+    background-color: grey;
+    position: fixed;
+    bottom:0;
+    text-align: center;
+    padding: 20px 0 20px 0;
+    flex-direction: column;
+    button {
+        margin:5px auto;
+        padding:10px 30px;
+        width: 60%;
+    }
+    @include for-tablet-landscape-up {
+        flex-direction: unset;
+        align-items: center;
+        justify-content: center;
+        
+        h5{
+            margin-right: 20px;
+            padding-right: 20px;
+            border-right: 2px solid black;
+        }
+        button {
+            margin: 5px;
+            width: unset;
+        }
+    }
+}

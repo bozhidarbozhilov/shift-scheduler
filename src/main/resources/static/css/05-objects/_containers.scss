@@ -1,0 +1,46 @@
+.content-container {
+    max-width: 335px;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    @include for-tablet-portrait-up {
+        max-width: 640px;
+    }
+
+    @include for-tablet-landscape-up {
+        max-width: 950px;
+    }
+    @include for-desktop-up {
+        max-width: 1290px;
+    }
+}
+
+.flex-container {
+    display: flex;
+    &--column {
+        flex-flow: column wrap;
+    }
+    &--space-btw {
+        justify-content: space-between;
+    }
+    &--space-even {
+        justify-content: space-evenly;
+    }
+    &--centered {
+        align-items: center;
+        justify-content: center;
+    }
+    &--rg05 {
+        row-gap: 0.5em;
+    }
+}
+
+.grid-container {
+    display: grid;
+    &--centered{
+        align-items: center;
+    }
+}
+

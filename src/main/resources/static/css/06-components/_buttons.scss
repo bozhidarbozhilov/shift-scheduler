@@ -1,0 +1,18 @@
+.btn {
+    border: none;
+    border-radius: 100px;
+    text-transform: uppercase;
+    align-items: center;
+    text-align: center;
+
+    &--primary{
+        background-color: $primary;
+        color: white;
+        padding:15px 30px;
+    }
+    &--white {
+        background-color: white;
+        color: black;
+    }
+
+}

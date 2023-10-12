@@ -1,0 +1,13 @@
+.all-news {
+    @include for-tablet-landscape-up {
+        display: grid;
+        grid-template-columns: 45% 45%;
+        column-gap: 1.5em;
+        row-gap: 1.5em;
+        justify-content: center;
+    }
+
+    @include for-desktop-up {
+        grid-template-columns: 24% 24% 24% 24%;
+    }
+}

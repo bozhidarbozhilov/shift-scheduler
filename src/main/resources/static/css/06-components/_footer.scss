@@ -1,0 +1,136 @@
+.footer {
+    background-color: rgb(37, 45, 57);
+    color: white;
+    padding: 6em 0 2em 0;
+
+    &>.content-container {
+        grid-template-columns: auto;
+        align-items: center;
+    }
+
+    &__nav {
+        grid-template-rows: auto;
+        grid-template-columns: 30% 50%;
+        margin-bottom: 3em;
+        column-gap: 2em;
+        h5 {
+            padding-bottom: 10px
+        }
+    }
+
+    &__text {
+        margin-bottom: 3em;
+        border-bottom: 1px solid white;
+        padding-bottom: 3em;
+
+    }
+
+    &__navigation {
+        &__list {
+            margin: 0;
+            padding: 0;
+
+            &__item {
+                list-style: none;
+                padding: 6px 0;
+
+                a {
+                    text-decoration: none;
+
+                }
+            }
+        }
+    }
+
+    &__socials {
+        margin-bottom: 3em;
+        
+        &__list {
+            padding-top: 1em;
+
+            &__item {
+                margin-right: 1em;
+            }
+
+            &__link {
+                display: inline-block;
+                text-align: center;
+                width: 45px;
+                height: 45px;
+                padding: 1em;
+                i {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+
+    &__bottom {
+        background-color: $dark-blue;
+        text-align: center;
+        grid-area: bottom;
+        span {
+            padding: 0 10px;
+        }
+    }
+
+    @include for-tablet-portrait-up {
+        &__text {
+            text-align: center;
+        }
+
+        &__socials {
+            margin: 0 auto 3em auto;
+            text-align: center;
+        }
+
+        &__nav {
+            justify-items: end;
+        }
+    }
+
+    @include for-desktop-up {
+        .content-container{
+            grid-template-areas:"text nav"
+                                "socials nav";
+            grid-template-columns: 50% 50%;
+        }
+        &__text {
+            grid-area: text;
+            text-align: start;
+        }
+
+        &__socials {
+            grid-area: socials;
+            display: flex;
+            align-items: center;
+            margin-left: 0;
+            &__list {
+                padding-top:0;
+                margin-left: 2em;
+                &__link {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+        }
+
+        &__nav {
+            align-self: start;
+            grid-area: nav;
+            justify-items: center;
+        }
+        
+        &__navigation {
+            &__list {
+                &__link {
+                    &:hover {
+                        color: lightcoral;
+                    }
+                }
+            }
+        }
+ 
+    }
+
+}

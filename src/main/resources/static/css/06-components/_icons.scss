@@ -1,0 +1,90 @@
+.icon {
+    &:before {
+        content:"";
+        display:inline-block;
+        font-family: "Font Awesome 5 Free";
+        font-weight:600;
+        color:white;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+    }
+
+    &--map-marker {
+        &:before{
+            content:"\f3c5";
+        }
+    }
+
+    &--envelope {
+        &:before{
+            content:"\f0e0";
+        }
+    }
+
+    &--phone {
+        &:before {
+            content:"\f095";
+        }
+    }
+
+    &--layer {
+        &:before {
+            content:"\f5fd";
+        }
+    }
+
+    &--github {
+        &:before{
+            font-family:"Font Awesome 5 Brands";
+            content:"\f09b";
+        }
+    }
+
+    &--gem{
+        &:before {
+            content:"\f3a5";
+        }
+    }
+
+    &--twitter {
+        &:before {
+            font-family:"Font Awesome 5 Brands";
+            content:"\f099";
+        }
+
+    }
+
+    &--user-friends {
+        &:before {
+            content:"\f500";
+        }
+    }
+
+    &--microchip {
+        &:before {
+            content: "\f2db";
+        }
+    }
+
+    &--left-arrow {
+        &:before {
+            content: "\f104";
+            color: inherit;
+        }
+    }
+    &--right-arrow {
+        &:before {
+            content: "\f105";
+            color: inherit;
+        }
+    }
+    &--close-btn {
+        &:before {
+            content: "\f00d";
+        }
+        &--white {
+            color: white;
+        }
+    }
+}

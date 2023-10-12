@@ -1,0 +1,60 @@
+.news-card {
+    border: 1px solid rgb(100,100,100);
+    width: 100%;
+    margin-bottom: 1em;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    &__img {
+        position: relative;
+        padding-top: 56.25%;
+        overflow: hidden;
+        width: 100%;
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    &__body {
+        width: 85%;
+        text-align: center;
+        position: relative;
+        flex: 1 1;
+
+        &__heading {
+            padding:1em 0;
+            height: 100px;
+            border-bottom: 2px solid rgb(100,100,100);
+        }
+
+        &__date {
+            margin:1em 0;
+        }
+
+        &__text{
+            height: 100px;
+        }
+        &__full-text {
+            display: none;
+        }
+
+        &__link {
+            padding: 8px 22px;
+            margin: 0 0 1em 0;
+            
+        }
+    }
+    @include for-desktop-up {
+        &__body{
+            &__heading {
+                height: 150px;
+            }
+            &__text{
+                height: 120px;
+            }
+        }
+    }
+}
