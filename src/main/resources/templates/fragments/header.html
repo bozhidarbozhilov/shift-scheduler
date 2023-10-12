@@ -1,4 +1,5 @@
 <header>
+    <input type="checkbox" class="menu-btn" id="menu-btn" />
     <nav class="site-navbar flex-container flex-container--centered">
         <div class="content-container">
             <div class="site-navbar__logo-container flex-container flex-container--space-btw">
@@ -33,145 +34,31 @@
                     <span class="open">Close</span>
                 </label>
             </div>
-
             <div class="site-navbar__nav-container">
-
                 <ul class="site-navbar__list flex-container">
-
-
-
                     <li  class="site-navbar__list__item site-navbar__list__item--current">
-                        <a href="/" class="site-navbar__list__link">
-                            Начало
+                        <a th:href="@{/}" class="site-navbar__list__link">
+                            Home
                         </a>
                     </li>
-
-
-
-
-                    <li class="site-navbar__list__item dropdown-menu">
-                        <a href="#" class="site-navbar__list__link">
-                            Услуги
+                    <li  class="site-navbar__list__item">
+                        <a th:href="@{/user/register}" class="site-navbar__list__link">
+                            User Register
                         </a>
-                        <ul class="dropdown-menu__content">
-
-                            <li class="dropdown-menu__content__item">
-                                <a href="/pages/services.html" class="dropdown-menu__content__link">
-                                    Всички услуги
-                                </a>
-                            </li>
-
-                            <li class="dropdown-menu__content__item">
-                                <a href="/pages/services/mmi-box.html" class="dropdown-menu__content__link">
-                                    Добавяне на MMI Box Andream
-                                </a>
-                            </li>
-
-                            <li class="dropdown-menu__content__item">
-                                <a href="/pages/services/nav-map.html" class="dropdown-menu__content__link">
-                                    Обновяване на навигационни карти
-                                </a>
-                            </li>
-
-                            <li class="dropdown-menu__content__item">
-                                <a href="/pages/services/speed-limit.html" class="dropdown-menu__content__link">
-                                    Активиране разпознаване на знаци
-                                </a>
-                            </li>
-
-                            <li class="dropdown-menu__content__item">
-                                <a href="/pages/services/car-play.html" class="dropdown-menu__content__link">
-                                    Активиране на Apple CarPlay
-                                </a>
-                            </li>
-
-                            <li class="dropdown-menu__content__item">
-                                <a href="/pages/services/whole-update.html" class="dropdown-menu__content__link">
-                                    Цялостно обновяване на вашето BMW
-                                </a>
-                            </li>
-
-                            <li class="dropdown-menu__content__item">
-                                <a href="/pages/services/region-change.html" class="dropdown-menu__content__link">
-                                    Смяна на региона към Европа
-                                </a>
-                            </li>
-
-                            <li class="dropdown-menu__content__item">
-                                <a href="/pages/services/remote-coding.html" class="dropdown-menu__content__link">
-                                    Дистанционно кодиране
-                                </a>
-                            </li>
-
-                            <li class="dropdown-menu__content__item">
-                                <a href="/pages/services/activation-codes.html" class="dropdown-menu__content__link">
-                                    Оригинални активационни кодове ОЕМ (FSC)
-                                </a>
-                            </li>
-
-                            <li class="dropdown-menu__content__item">
-                                <a href="/pages/services/nbt-evo-update.html" class="dropdown-menu__content__link">
-                                    Обновяване на NBT EVO ID4 към ID5/6
-                                </a>
-                            </li>
-
-                            <li class="dropdown-menu__content__item">
-                                <a href="/pages/services/american-lights.html" class="dropdown-menu__content__link">
-                                    Преработване на Американски стопове
-                                </a>
-                            </li>
-
-                            <li class="dropdown-menu__content__item">
-                                <a href="/pages/services/hard-disk-change.html" class="dropdown-menu__content__link">
-                                    Смяна на твърд диск при NBT и NBT EVO ID4/5/6
-                                </a>
-                            </li>
-
-                        </ul>
                     </li>
-
-
-
+                    <li  class="site-navbar__list__item">
+                        <a th:href="@{/}" class="site-navbar__list__link">
+                            Add Schedule
+                        </a>
+                    </li>
 
                     <li  class="site-navbar__list__item">
-                        <a href="/pages/gallery-index.html" class="site-navbar__list__link">
-                            Галерия
+                        <a th:href="@{/}" class="site-navbar__list__link">
+                            My Schedules
                         </a>
                     </li>
-
-
-
-
-                    <li  class="site-navbar__list__item">
-                        <a href="/pages/news.html" class="site-navbar__list__link">
-                            Новини
-                        </a>
-                    </li>
-
-
-
-
-                    <li  class="site-navbar__list__item">
-                        <a href="/pages/about.html" class="site-navbar__list__link">
-                            За нас
-                        </a>
-                    </li>
-
-
-
-
-                    <li  class="site-navbar__list__item">
-                        <a href="/pages/contact.html" class="site-navbar__list__link">
-                            Контакти
-                        </a>
-                    </li>
-
-
                 </ul>
-
             </div>
-
         </div>
-
     </nav>
 </header>
