@@ -15,4 +15,8 @@ public enum Status {
     }
     private final String label;
     private final double hours;
+
+    public String getLabel() {
+        return label;
+    }
 }

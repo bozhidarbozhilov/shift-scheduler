@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head}">
+</head>
+<body>
+<header th:replace="~{fragments/header}"></header>
+<div class="content-container">
+    <h2 th:class="txt-center">Create Schedule</h2>
+        <form th:action="@{/schedule/create}" th:method="post" th:object="${scheduleCreateViewModel}">
+            <div class="start-date">
+                <div class="form__group txt-center">
+                    <label for="start-date">Start Date</label>
+                    <input th:type="date" class="form__input" id="start-date" th:field="*{date}" format="dd/mm/yyyy" placeholder="Start Date.."/>
+                </div>
+                <div class="form__group txt-center">
+                    <h3 class="txt-center">Schedule Pattern</h3>
+                    <label for="day-shifts-num">Day Shifts Number</label>
+                    <select id="day-shifts-num" th:field="*{dayShiftsNum}">
+                        <option th:each="i : ${#numbers.sequence(1, 4)}" th:value="${i}" th:text="${i}">
+                        </option>
+                    </select>
+<!--                    <input th:type="number" class="form__input" id="day-shifts-num" th:field="*{dayShiftsNum}"  placeholder="Day Shifts Number.."/>-->
+                    <label for="night-shifts-num">Night Shifts Number</label>
+                    <select id="night-shifts-num" th:field="*{nightShiftsNum}">
+                        <option th:each="i : ${#numbers.sequence(1, 4)}" th:value="${i}" th:text="${i}">
+                        </option>
+                    </select>
+<!--                    <input th:type="number" class="form__input" id="night-shifts-num" th:field="*{nightShiftsNum}"  placeholder="Night Shifts Number.."/>-->
+                    <label for="days-off-num">Days Off Number</label>
+                    <select id="days-off-num" th:field="*{daysOffNum}">
+                        <option th:each="i : ${#numbers.sequence(1, 4)}" th:value="${i}" th:text="${i}">
+                        </option>
+                    </select>
+<!--                    <input th:type="number" class="form__input" id="days-off-num" th:field="*{daysOffNum}"  placeholder="Days Off Number.."/>-->
+                </div>
+
+                <div class="form__group txt-center">
+                    <label for="day-status">Status</label>
+<!--                    <input class="form__input" type="text" id="dayStatus" th:field="*{dayStatus}" placeholder="Status."/>-->
+                    <select id="day-status" name="dayStatus">
+                        <option th:each="dayStatus : ${T(com.bozhilov.shiftscheduler.schedules.config.Status).values()}"
+                                th:value="${dayStatus}" th:text="${dayStatus.getLabel()}"></option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="form__group txt-center">
+                <button class="btn">Create</button>
+            </div>
+        </form>
+
+</div>
+
+</body>
