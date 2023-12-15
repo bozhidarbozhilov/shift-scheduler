@@ -3,7 +3,7 @@ package com.bozhilov.shiftscheduler.users.services.implementations;
 import com.bozhilov.shiftscheduler.users.domain.entities.User;
 import com.bozhilov.shiftscheduler.users.repositories.UserRepository;
 import com.bozhilov.shiftscheduler.users.services.models.UserServiceModel;
-import com.bozhilov.shiftscheduler.users.services.services.UserService;
+import com.bozhilov.shiftscheduler.users.services.contracts.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

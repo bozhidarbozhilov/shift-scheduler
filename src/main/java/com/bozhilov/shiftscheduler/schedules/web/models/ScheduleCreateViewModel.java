@@ -4,15 +4,16 @@ public class ScheduleCreateViewModel {
     private int dayShiftsNum;
     private int nightShiftsNum;
     private int daysOffNum;
-    private String date;
+    private String startDate;
+    private String endDate;
     private String dayStatus;
 
-    public String getDate() {
-        return date;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setStartDate(String date) {
+        this.startDate = date;
     }
 
     public String getDayStatus() {
@@ -45,5 +46,13 @@ public class ScheduleCreateViewModel {
 
     public void setDaysOffNum(int daysOffNum) {
         this.daysOffNum = daysOffNum;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 }

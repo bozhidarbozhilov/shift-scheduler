@@ -1,4 +1,4 @@
-package com.bozhilov.shiftscheduler.users.services.services;
+package com.bozhilov.shiftscheduler.users.services.contracts;
 
 import com.bozhilov.shiftscheduler.users.services.models.UserServiceModel;
 

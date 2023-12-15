@@ -11,7 +11,11 @@
             <div class="start-date">
                 <div class="form__group txt-center">
                     <label for="start-date">Start Date</label>
-                    <input th:type="date" class="form__input" id="start-date" th:field="*{date}" format="dd/mm/yyyy" placeholder="Start Date.."/>
+                    <input th:type="date" class="form__input" id="start-date" th:field="*{startDate}" format="dd/mm/yyyy" placeholder="Start Date.."/>
+                </div>
+                <div class="form__group txt-center">
+                    <label for="end-date">End Date</label>
+                    <input th:type="date" class="form__input" id="end-date" th:field="*{endDate}" format="dd/mm/yyyy" placeholder="End Date.."/>
                 </div>
                 <div class="form__group txt-center">
                     <h3 class="txt-center">Schedule Pattern</h3>

@@ -10,13 +10,18 @@ public enum Status {
     ADM("A","administrative", 8d),
     VAC("V", "vacation", 0d);
     private Status(String symbol, String label, double hours){
+        this.symbol = symbol;
         this.label = label;
         this.hours = hours;
     }
+    private final String symbol;
     private final String label;
     private final double hours;
 
     public String getLabel() {
         return label;
+    }
+    public String getSymbol(){
+        return symbol;
     }
 }

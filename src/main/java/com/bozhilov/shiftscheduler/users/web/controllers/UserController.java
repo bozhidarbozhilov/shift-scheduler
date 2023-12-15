@@ -2,7 +2,7 @@ package com.bozhilov.shiftscheduler.users.web.controllers;
 
 import com.bozhilov.shiftscheduler.common.controllers.BaseController;
 import com.bozhilov.shiftscheduler.users.services.models.UserServiceModel;
-import com.bozhilov.shiftscheduler.users.services.services.UserService;
+import com.bozhilov.shiftscheduler.users.services.contracts.UserService;
 import com.bozhilov.shiftscheduler.common.annotations.PageTitle;
 import com.bozhilov.shiftscheduler.users.web.models.user.RegisterUserModel;
 import org.modelmapper.ModelMapper;

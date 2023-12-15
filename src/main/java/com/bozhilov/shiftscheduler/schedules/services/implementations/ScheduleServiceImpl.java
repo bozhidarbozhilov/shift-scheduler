@@ -2,9 +2,10 @@ package com.bozhilov.shiftscheduler.schedules.services.implementations;
 
 import com.bozhilov.shiftscheduler.schedules.config.Status;
 import com.bozhilov.shiftscheduler.schedules.domain.entities.Day;
-import com.bozhilov.shiftscheduler.schedules.services.models.DayServiceModel;
 import com.bozhilov.shiftscheduler.schedules.services.models.ScheduleServiceModel;
-import com.bozhilov.shiftscheduler.schedules.services.services.ScheduleService;
+import com.bozhilov.shiftscheduler.schedules.services.contracts.ScheduleService;
+import com.bozhilov.shiftscheduler.schedules.web.models.ScheduleCreateModel;
+import com.bozhilov.shiftscheduler.schedules.web.models.ScheduleCreateViewModel;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -20,17 +21,21 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
-    public ScheduleServiceModel generateSchedule() {
-        List<Day> days = new ArrayList<>();
+    public ScheduleServiceModel generateSchedule(ScheduleCreateViewModel scheduleCreateViewModel) {
 
-        LocalDate startDate = LocalDate.of(2023, 10, 1);
-        LocalDate endDate = LocalDate.of(2023,10, 31);
+        String startDateStr = scheduleCreateViewModel.getStartDate();
+        String endDateStr = scheduleCreateViewModel.getEndDate();
+        LocalDate startDate = LocalDate.parse(startDateStr);
+        LocalDate endDate = LocalDate.parse(endDateStr);
+
         Period timeInterval = Period.between(startDate, endDate);
         int interval = timeInterval.getDays();
-        int daysShiftsNumber = 2;
-        int nightsShiftsNumber = 2;
-        int daysOffNumber = 4;
+        int daysShiftsNumber = scheduleCreateViewModel.getDayShiftsNum();
+        int nightsShiftsNumber = scheduleCreateViewModel.getNightShiftsNum();
+        int daysOffNumber = scheduleCreateViewModel.getDaysOffNum();
         int step = daysShiftsNumber + nightsShiftsNumber + daysOffNumber;
+
+        List<Day> days = new ArrayList<>();
         for (int i = 0; i < interval; i = i + step) {
             days.addAll(generateScheduleCycle(startDate.plusDays(i), daysShiftsNumber, nightsShiftsNumber, daysOffNumber));
         }
