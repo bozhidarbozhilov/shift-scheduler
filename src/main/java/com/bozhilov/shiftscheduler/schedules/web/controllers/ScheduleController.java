@@ -42,6 +42,7 @@ public class ScheduleController extends BaseController {
                                        ModelAndView modelAndView,
                                        RedirectAttributes redirectAttributes) {
         ScheduleServiceModel serviceModel = scheduleService.generateSchedule(scheduleCreateViewModel);
+        ScheduleServiceModel savedSchedule = scheduleService.saveSchedule(serviceModel);
         ScheduleViewModel scheduleViewModel = mapper.map(serviceModel, ScheduleViewModel.class);
         redirectAttributes.addFlashAttribute("scheduleViewModel", scheduleViewModel);
         modelAndView.setViewName(super.redirect("schedule/api/generate"));

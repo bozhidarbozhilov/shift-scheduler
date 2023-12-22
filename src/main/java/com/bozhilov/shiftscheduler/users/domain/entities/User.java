@@ -16,7 +16,7 @@ public class User extends BaseEntity {
     private String password;
     private Employee employee;
 
-    private List<Schedule> schedules;
+    //private List<Schedule> schedules;
 
 
 
@@ -44,12 +44,12 @@ public class User extends BaseEntity {
     public void setPassword(String password) {
         this.password = password;
     }
-    @OneToMany(mappedBy = "user", targetEntity = Schedule.class)
-    public List<Schedule> getSchedules() {
-        return schedules;
-    }
-
-    public void setSchedules(List<Schedule> schedules) {
-        this.schedules = schedules;
-    }
+//    @OneToMany(mappedBy = "user", targetEntity = Schedule.class)
+//    public List<Schedule> getSchedules() {
+//        return schedules;
+//    }
+//
+//    public void setSchedules(List<Schedule> schedules) {
+//        this.schedules = schedules;
+//    }
 }
