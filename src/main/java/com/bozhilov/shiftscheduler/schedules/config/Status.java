@@ -24,4 +24,6 @@ public enum Status {
     public String getSymbol(){
         return symbol;
     }
+
+
 }

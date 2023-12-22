@@ -1,7 +1,5 @@
 package com.bozhilov.shiftscheduler.schedules.web.models;
 
-import com.bozhilov.shiftscheduler.schedules.domain.entities.Day;
-
 import java.time.LocalDate;
 
 public class ScheduleCreateModel {

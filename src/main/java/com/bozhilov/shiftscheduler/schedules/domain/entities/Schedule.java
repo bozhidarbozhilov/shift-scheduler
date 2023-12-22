@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="schedules")
 public class Schedule extends BaseEntity {
-
     private List<Day> days;
     private User user;
     @ManyToOne

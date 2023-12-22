@@ -39,6 +39,7 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     width: 100%;
+
 }
 .day{
     text-align: center;
@@ -46,26 +47,24 @@
     border-bottom: 1.5px solid black;
     border-left: 1.5px solid black;
     padding: 5px;
-    
 }
-.day:last-child{
-    border-right: 1.5px solid black;
-}
-.day-status {
-    margin: auto;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-.date-contaiter {
+//.day:last-child{
+//    border-right: 1.5px solid black;
+//}
+//.day-status {
+//    margin: auto;
+//    font-size: 1.5rem;
+//    font-weight: bold;
+//}
+.date-container {
     width: 100%;
-    display:flex;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
 }
 .pn-month{
     background-color: rgba(0,0,0,0.3);
 }
 .date{
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
     height: 50px;
     border-bottom: 1.5px solid black;
     border-left: 1.5px solid;

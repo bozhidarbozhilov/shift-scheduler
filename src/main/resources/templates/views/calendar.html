@@ -26,26 +26,17 @@
             <div class="day">Sat</div>
             <div class="day">Sun</div>
         </div>
-        <div class="date-container" >
-
-            <!-- first week of month -->
-            <div class="week">
-                <th:block th:each="day, stat : ${scheduleViewModel.days}">
-                    <div th:remove="${stat.count % 7 != 0} ? tag : none" class="week">
-                        <div class="date"><span class="day-status" th:text="${day.status}"></span></div>
-                    </div>
-<!--                    <div class="date"><span class="day-status" th:text="${day.status}"></span></div>-->
-                </th:block>
+        <div th:class="date-container">
+            <div class="date" th:each="day, stat : ${scheduleViewModel.days}">
+                <span class="day-status" th:text="${day.status.symbol}"></span>
             </div>
-
-<!--            <div th:fragment="week" class="week">-->
-
-
+<!--            <div th:remove="${stat.count % 7 != 0 } or stat.count == 1  ? tag : none" th:class="week"-->
+<!--                 th:each="day, stat : ${scheduleViewModel.days}">-->
+<!--                        <div class="date"><span class="day-status" th:text="${day.status.symbol}"></span></div>-->
 <!--            </div>-->
-        </div>
-        <div class="generated-tags" id="generated-tags">
 
         </div>
+
     </div>
 </div>
 

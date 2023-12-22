@@ -1,11 +1,13 @@
 package com.bozhilov.shiftscheduler.schedules.services.implementations;
 
-import com.bozhilov.shiftscheduler.schedules.config.Status;
-import com.bozhilov.shiftscheduler.schedules.domain.entities.Day;
+import com.bozhilov.shiftscheduler.schedules.domain.entities.Schedule;
+import com.bozhilov.shiftscheduler.schedules.repositories.ScheduleRepository;
+import com.bozhilov.shiftscheduler.schedules.services.models.DayServiceModel;
 import com.bozhilov.shiftscheduler.schedules.services.models.ScheduleServiceModel;
 import com.bozhilov.shiftscheduler.schedules.services.contracts.ScheduleService;
-import com.bozhilov.shiftscheduler.schedules.web.models.ScheduleCreateModel;
 import com.bozhilov.shiftscheduler.schedules.web.models.ScheduleCreateViewModel;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -15,9 +17,23 @@ import java.util.List;
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
+    private static final String DAY_SHIFT = "DAY";
+    private static final String NIGHT_SHIFT = "NGHT";
+    private static final String DAY_OFF = "OFF";
+    private final ModelMapper mapper;
+    private final ScheduleRepository repository;
+
+    @Autowired
+    public ScheduleServiceImpl(ModelMapper mapper, ScheduleRepository repository) {
+        this.mapper = mapper;
+        this.repository = repository;
+    }
+
     @Override
     public ScheduleServiceModel saveSchedule(ScheduleServiceModel scheduleServiceModel) {
-        return null;
+        Schedule schedule = mapper.map(scheduleServiceModel, Schedule.class);
+        Schedule savedSchedule = repository.save(schedule);
+        return mapper.map(savedSchedule, ScheduleServiceModel.class);
     }
 
     @Override
@@ -35,7 +51,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         int daysOffNumber = scheduleCreateViewModel.getDaysOffNum();
         int step = daysShiftsNumber + nightsShiftsNumber + daysOffNumber;
 
-        List<Day> days = new ArrayList<>();
+        List<DayServiceModel> days = new ArrayList<>();
         for (int i = 0; i < interval; i = i + step) {
             days.addAll(generateScheduleCycle(startDate.plusDays(i), daysShiftsNumber, nightsShiftsNumber, daysOffNumber));
         }
@@ -44,21 +60,23 @@ public class ScheduleServiceImpl implements ScheduleService {
         return scheduleServiceModel;
     }
 
-    private List<Day> generateScheduleCycle(LocalDate date, int daysShiftsNumber, int nightsShiftsNumber, int daysOffNumber){
+    private List<DayServiceModel> generateScheduleCycle(LocalDate date, int daysShiftsNumber, int nightsShiftsNumber, int daysOffNumber){
         int step = daysShiftsNumber + nightsShiftsNumber + daysOffNumber;
-        List<Day> cycle = new ArrayList<>(step);
+        List<DayServiceModel> cycle = new ArrayList<>(step);
         for (int i = 0; i < step; i++) {
-            Day currentDay = new Day();
+            DayServiceModel currentDay = new DayServiceModel();
             if(i<daysShiftsNumber){
-                currentDay.setStatus(Status.DAY);
+                currentDay.setStatus(DAY_SHIFT);
             }else if(i < daysShiftsNumber + nightsShiftsNumber){
-                currentDay.setStatus(Status.NGHT);
+                currentDay.setStatus(NIGHT_SHIFT);
             }else{
-                currentDay.setStatus(Status.OFF);
+                currentDay.setStatus(DAY_OFF);
             }
-            currentDay.setDate(date.plusDays(i));
+            LocalDate nextDay = date.plusDays(i);
+            currentDay.setLocalDate(nextDay.toString());
             cycle.add(currentDay);
         }
         return cycle;
     }
+
 }
