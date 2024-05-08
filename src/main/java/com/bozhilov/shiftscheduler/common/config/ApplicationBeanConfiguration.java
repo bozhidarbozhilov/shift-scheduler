@@ -38,7 +38,7 @@ public class ApplicationBeanConfiguration {
         Converter<String, Status> statusConverter = ctx -> Status.valueOf(ctx.getSource());
         modelMapper.typeMap(DayServiceModel.class, Day.class)
                    .addMappings(mapper->mapper.using(localDateConverter)
-                                             .map(DayServiceModel::getLocalDate, Day::setDate))
+                                             .map(DayServiceModel::getDate, Day::setDate))
                    .addMappings(mapper->mapper.using(statusConverter)
                                    .map(DayServiceModel::getStatus, Day::setStatus));
 

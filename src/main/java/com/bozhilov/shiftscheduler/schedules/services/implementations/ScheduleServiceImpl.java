@@ -10,10 +10,13 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
@@ -45,7 +48,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         LocalDate endDate = LocalDate.parse(endDateStr);
 
         Period timeInterval = Period.between(startDate, endDate);
-        int interval = timeInterval.getDays();
+        int interval = timeInterval.getDays() + 1;
         int daysShiftsNumber = scheduleCreateViewModel.getDayShiftsNum();
         int nightsShiftsNumber = scheduleCreateViewModel.getNightShiftsNum();
         int daysOffNumber = scheduleCreateViewModel.getDaysOffNum();
@@ -53,14 +56,16 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         List<DayServiceModel> days = new ArrayList<>();
         for (int i = 0; i < interval; i = i + step) {
-            days.addAll(generateScheduleCycle(startDate.plusDays(i), daysShiftsNumber, nightsShiftsNumber, daysOffNumber));
+            LocalDate currentDate = startDate.plusDays(i);
+            days.addAll(generateScheduleCycle(currentDate, endDate, daysShiftsNumber, nightsShiftsNumber, daysOffNumber));
         }
         ScheduleServiceModel scheduleServiceModel = new ScheduleServiceModel();
         scheduleServiceModel.setDays(days);
+        scheduleServiceModel.setName(scheduleCreateViewModel.getName());
         return scheduleServiceModel;
     }
 
-    private List<DayServiceModel> generateScheduleCycle(LocalDate date, int daysShiftsNumber, int nightsShiftsNumber, int daysOffNumber){
+    private List<DayServiceModel> generateScheduleCycle(LocalDate date,LocalDate endDate, int daysShiftsNumber, int nightsShiftsNumber, int daysOffNumber){
         int step = daysShiftsNumber + nightsShiftsNumber + daysOffNumber;
         List<DayServiceModel> cycle = new ArrayList<>(step);
         for (int i = 0; i < step; i++) {
@@ -73,10 +78,20 @@ public class ScheduleServiceImpl implements ScheduleService {
                 currentDay.setStatus(DAY_OFF);
             }
             LocalDate nextDay = date.plusDays(i);
-            currentDay.setLocalDate(nextDay.toString());
+            if(nextDay.isAfter(endDate)){
+                break;
+            }
+            currentDay.setDate(nextDay);
             cycle.add(currentDay);
         }
         return cycle;
     }
 
+    @Override
+    public List<ScheduleServiceModel> allSchedules() {
+        List<ScheduleServiceModel> allSchedules = repository
+                .findAll().stream().map(schedule -> mapper.map(schedule, ScheduleServiceModel.class))
+                .collect(Collectors.toUnmodifiableList());
+        return allSchedules;
+    }
 }

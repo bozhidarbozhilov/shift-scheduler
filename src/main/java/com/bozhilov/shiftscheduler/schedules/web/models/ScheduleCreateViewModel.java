@@ -1,6 +1,7 @@
 package com.bozhilov.shiftscheduler.schedules.web.models;
 
 public class ScheduleCreateViewModel {
+    private String name;
     private int dayShiftsNum;
     private int nightShiftsNum;
     private int daysOffNum;
@@ -54,5 +55,13 @@ public class ScheduleCreateViewModel {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

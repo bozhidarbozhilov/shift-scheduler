@@ -3,6 +3,7 @@ package com.bozhilov.shiftscheduler.schedules.web.models;
 import java.time.LocalDate;
 
 public class ScheduleCreateModel {
+    private String name;
     private LocalDate startDate;
     private LocalDate endDate;
     private int dayShiftsNum;
@@ -56,5 +57,13 @@ public class ScheduleCreateModel {
 
     public void setDaysOffNum(int daysOffNum) {
         this.daysOffNum = daysOffNum;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

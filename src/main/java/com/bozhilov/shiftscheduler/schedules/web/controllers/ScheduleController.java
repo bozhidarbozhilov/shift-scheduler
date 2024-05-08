@@ -1,6 +1,7 @@
 package com.bozhilov.shiftscheduler.schedules.web.controllers;
 
 import com.bozhilov.shiftscheduler.common.controllers.BaseController;
+import com.bozhilov.shiftscheduler.common.utils.Counter;
 import com.bozhilov.shiftscheduler.schedules.services.contracts.ScheduleService;
 import com.bozhilov.shiftscheduler.schedules.services.models.ScheduleServiceModel;
 import com.bozhilov.shiftscheduler.schedules.web.models.ScheduleCreateModel;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 @RequestMapping("/schedule")
@@ -42,18 +44,21 @@ public class ScheduleController extends BaseController {
                                        ModelAndView modelAndView,
                                        RedirectAttributes redirectAttributes) {
         ScheduleServiceModel serviceModel = scheduleService.generateSchedule(scheduleCreateViewModel);
-        ScheduleServiceModel savedSchedule = scheduleService.saveSchedule(serviceModel);
+        //ScheduleServiceModel savedSchedule = scheduleService.saveSchedule(serviceModel);
         ScheduleViewModel scheduleViewModel = mapper.map(serviceModel, ScheduleViewModel.class);
-        redirectAttributes.addFlashAttribute("scheduleViewModel", scheduleViewModel);
-        modelAndView.setViewName(super.redirect("schedule/api/generate"));
+        //redirectAttributes.addFlashAttribute("scheduleViewModel", scheduleViewModel);
+        //modelAndView.setViewName(super.redirect("schedule/all"));
         //modelAndView.setViewName(super.redirect("schedule/generate"));
+        modelAndView.addObject("scheduleViewModel", scheduleViewModel);
+        modelAndView.addObject("counter", new Counter());
+        modelAndView.setViewName(super.view("calendar"));
         return modelAndView;
     }
 
     @GetMapping(value = "/generate")
     public ModelAndView getCalendar(@ModelAttribute(name="scheduleViewModel") ScheduleViewModel scheduleViewModel, ModelAndView modelAndView) {
         modelAndView.addObject("scheduleViewModel", scheduleViewModel);
-        modelAndView.setViewName(super.view("calendar"));
+        modelAndView.setViewName(super.view("schedule-create"));
         return modelAndView;
     }
 
@@ -63,6 +68,13 @@ public class ScheduleController extends BaseController {
         //ScheduleServiceModel scheduleServiceModel = scheduleService.generateSchedule();
         var json = gson.toJson(scheduleViewModel.getDays());
         return json;
+    }
+    @GetMapping(value="/all")
+    public ModelAndView getAllSchedules(ModelAndView modelAndView){
+        List<ScheduleServiceModel> allSchedules = scheduleService.allSchedules();
+        modelAndView.addObject("allSchedules", allSchedules);
+        modelAndView.setViewName(super.view("all-schedules"));
+        return modelAndView;
     }
 
 }

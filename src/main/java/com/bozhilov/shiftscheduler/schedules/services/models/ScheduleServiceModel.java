@@ -4,7 +4,8 @@ import java.util.List;
 
 
 public class ScheduleServiceModel {
-    List<DayServiceModel> days;
+    private String name;
+    private List<DayServiceModel> days;
 
     public List<DayServiceModel> getDays() {
         return days;
@@ -12,5 +13,13 @@ public class ScheduleServiceModel {
 
     public void setDays(List<DayServiceModel> days) {
         this.days = days;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

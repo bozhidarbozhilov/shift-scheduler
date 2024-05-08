@@ -1,15 +1,17 @@
 package com.bozhilov.shiftscheduler.schedules.services.models;
 
+import java.time.LocalDate;
+
 public class DayServiceModel {
-    private String localDate;
+    private LocalDate date;
     private String status;
 
-    public String getLocalDate() {
-        return localDate;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setLocalDate(String localDate) {
-        this.localDate = localDate;
+    public void setDate(LocalDate localDate) {
+        this.date = localDate;
     }
 
     public String getStatus() {

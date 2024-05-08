@@ -1,17 +1,29 @@
 package com.bozhilov.shiftscheduler.schedules.web.models;
 
 import com.bozhilov.shiftscheduler.schedules.domain.entities.Day;
+import com.bozhilov.shiftscheduler.schedules.services.models.DayServiceModel;
+import com.fasterxml.jackson.datatype.jsr310.deser.MonthDayDeserializer;
 
 import java.util.List;
 
 public class ScheduleViewModel {
-    List<Day> days;
+    private String name;
 
-    public List<Day> getDays() {
+    List<DayServiceModel> days;
+
+    public List<DayServiceModel> getDays() {
         return days;
     }
 
-    public void setDays(List<Day> days) {
+    public void setDays(List<DayServiceModel> days) {
         this.days = days;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

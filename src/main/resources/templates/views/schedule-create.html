@@ -8,6 +8,12 @@
 <div class="content-container">
     <h2 th:class="txt-center">Create Schedule</h2>
         <form th:action="@{/schedule/create}" th:method="post" th:object="${scheduleCreateViewModel}">
+            <div class="form__group txt-center">
+                <label for="name">Name</label>
+                <!--                    <input class="form__input" type="text" id="dayStatus" th:field="*{dayStatus}" placeholder="Status."/>-->
+                <input th:type="text" class="form__input" id="name" th:field="*{name}" placeholder="Schedule name..."/>
+
+            </div>
             <div class="start-date">
                 <div class="form__group txt-center">
                     <label for="start-date">Start Date</label>

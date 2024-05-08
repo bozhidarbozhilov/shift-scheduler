@@ -7,7 +7,9 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="schedules")
 public class Schedule extends BaseEntity {
+    private String name;
     private List<Day> days;
+
     //private User user;
 //    @ManyToOne
 //    @JoinColumn(name="user_id", referencedColumnName = "id")
@@ -31,5 +33,12 @@ public class Schedule extends BaseEntity {
         this.days = days;
     }
 
+    @Column(name="name")
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

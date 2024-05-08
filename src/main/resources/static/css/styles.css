@@ -1430,10 +1430,18 @@ svg path {
   padding: 5px;
 }
 
+.day:last-child {
+  border-right: 1.5px solid black;
+}
+
+.day-status {
+  margin: auto;
+  font-weight: bold;
+}
+
 .date-container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
 }
 
 .pn-month {

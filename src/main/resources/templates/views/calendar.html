@@ -26,18 +26,29 @@
             <div class="day">Sat</div>
             <div class="day">Sun</div>
         </div>
-        <div th:class="date-container">
-            <div class="date" th:each="day, stat : ${scheduleViewModel.days}">
-                <span class="day-status" th:text="${day.status.symbol}"></span>
-            </div>
-<!--            <div th:remove="${stat.count % 7 != 0 } or stat.count == 1  ? tag : none" th:class="week"-->
-<!--                 th:each="day, stat : ${scheduleViewModel.days}">-->
-<!--                        <div class="date"><span class="day-status" th:text="${day.status.symbol}"></span></div>-->
-<!--            </div>-->
+        <div th:class="date-container" th:with="firstDay=${#temporals.dayOfWeek(scheduleViewModel.days[0].date)}">
+                <div th:class="week">
+                    <th:block th:each="i:${#numbers.sequence(1, 7)}"
+                            th:with="currentDate=${scheduleViewModel.days[counter.get()].date}">
+                        <div th:class="date">
+                            <span th:class="date-number" th:text="${i>=firstDay}?${counter.get()+1}"></span>
+                            <span th:class="day-status" th:text="${i>=firstDay}?${scheduleViewModel.days[counter.getAndIncrement()].status}"></span>
+                        </div>
 
+                    </th:block>
+                </div>
+            <th:block th:if="${counter.get()<#lists.size(scheduleViewModel.days)}"
+                      th:with="currentDate=${scheduleViewModel.days[counter.get()].date}">
+                <div th:class="week" th:each="j:${#numbers.sequence(1,4)}">
+                    <th:block th:each="i:${#numbers.sequence(1, 7)}">
+                        <div th:class="date">
+                            <span th:class="date-number" th:text="${counter.get()<#lists.size(scheduleViewModel.days)}?${counter.get()+1}"></span>
+                            <span th:class="day-status" th:text="${counter.get()<#lists.size(scheduleViewModel.days)}?${scheduleViewModel.days[counter.getAndIncrement()].status}"></span>
+                        </div>
+                    </th:block>
+                </div>
+            </th:block>
         </div>
-
-    </div>
 </div>
 
 <script src="/js/calendar.js"></script>
